@@ -3,9 +3,7 @@ TRUNCATE TABLE Projeto RESTART IDENTITY CASCADE;
 TRUNCATE TABLE Reuniao RESTART IDENTITY CASCADE;
 TRUNCATE TABLE Recurso RESTART IDENTITY CASCADE;
 
--- =======================================================================
 -- 1. Inserindo 20 Usuários (IDs 1 a 10 para Alunos, 11 a 20 para Professores)
--- =======================================================================
 INSERT INTO Usuario (email, senha, primeiro_nome, nome_meio, ultimo_nome) VALUES
 ('joao.silva@email.com', 'senha123', 'João', 'Batista', 'Silva'),
 ('maria.clara@email.com', 'senha123', 'Maria', 'Clara', 'Oliveira'),
@@ -28,9 +26,7 @@ INSERT INTO Usuario (email, senha, primeiro_nome, nome_meio, ultimo_nome) VALUES
 ('tiago.prof@email.com', 'prof123', 'Tiago', 'José', 'Machado'),
 ('vanessa.prof@email.com', 'prof123', 'Vanessa', 'Cristina', 'Borges');
 
--- =======================================================================
 -- 2. Inserindo 10 Alunos (Vinculados aos IDs de usuário 1 ao 10)
--- =======================================================================
 INSERT INTO Aluno (id_usuario, matricula, curso, semestre) VALUES
 (1, '20231001', 'Engenharia de Software', 3),
 (2, '20231002', 'Ciência da Computação', 5),
@@ -43,9 +39,7 @@ INSERT INTO Aluno (id_usuario, matricula, curso, semestre) VALUES
 (9, '20231009', 'Análise e Desenv. de Sistemas', 2),
 (10, '20231010', 'Análise e Desenv. de Sistemas', 4);
 
--- =======================================================================
 -- 3. Inserindo 10 Professores (Vinculados aos IDs de usuário 11 ao 20)
--- =======================================================================
 INSERT INTO Professor (id_usuario, departamento, titulacao) VALUES
 (11, 'Computação', 'Doutor'),
 (12, 'Computação', 'Mestre'),
@@ -58,9 +52,7 @@ INSERT INTO Professor (id_usuario, departamento, titulacao) VALUES
 (19, 'Estatística', 'Doutor'),
 (20, 'Computação', 'Pós-Doutor');
 
--- =======================================================================
 -- 4. Inserindo 10 Projetos (Professores Orientadores: IDs 11 a 20)
--- =======================================================================
 INSERT INTO Projeto (nome, comite, descricao, data_inicio, data_fim, prazo, categoria, status, id_professor_orientador) VALUES
 ('Sistema de Biblioteca', 'Comitê de TI', 'Automatização do acervo.', '2024-01-15', NULL, '2024-12-15', 'Extensão', 'Em Andamento', 11),
 ('App de Mobilidade', 'Comitê de Inovação', 'App para rotas de ônibus.', '2024-02-01', NULL, '2024-11-30', 'Pesquisa', 'Em Andamento', 12),
@@ -73,9 +65,7 @@ INSERT INTO Projeto (nome, comite, descricao, data_inicio, data_fim, prazo, cate
 ('Jogo Educacional', 'Comitê de Inovação', 'Ensino de matemática.', '2024-02-15', NULL, '2024-07-20', 'Extensão', 'Em Andamento', 19),
 ('Cybersegurança', 'Comitê de TI', 'Auditoria de redes.', '2024-03-10', NULL, '2024-12-20', 'Pesquisa', 'Em Andamento', 20);
 
--- =======================================================================
 -- 5. Inserindo 10 Membros de Equipe (Alunos alocados nos Projetos)
--- =======================================================================
 INSERT INTO Membro_Equipe (id_projeto, id_aluno) VALUES
 (1, 1),
 (2, 2),
@@ -88,9 +78,7 @@ INSERT INTO Membro_Equipe (id_projeto, id_aluno) VALUES
 (9, 9),
 (10, 10);
 
--- =======================================================================
 -- 6. Inserindo 10 Reuniões
--- =======================================================================
 INSERT INTO Reuniao (data_da_reuniao, horario_de_inicio, horario_de_fim, local, tipo, pauta) VALUES
 ('2024-01-10', '14:00:00', '15:00:00', 'Sala 101', 'Planejamento', 'Definição de escopo do projeto'),
 ('2024-02-05', '09:00:00', '10:30:00', 'Laboratório 3', 'Acompanhamento', 'Revisão da Sprint 1'),
@@ -103,9 +91,7 @@ INSERT INTO Reuniao (data_da_reuniao, horario_de_inicio, horario_de_fim, local, 
 ('2024-09-12', '17:00:00', '18:00:00', 'Teams', 'Encerramento', 'Preparação para entrega final'),
 ('2024-10-01', '10:00:00', '11:00:00', 'Sala dos Professores', 'Avaliação', 'Discussão sobre as notas');
 
--- =======================================================================
 -- 7. Inserindo 10 Participações em Reunião
--- =======================================================================
 INSERT INTO Participacao_Reuniao (id_reuniao, id_usuario) VALUES
 (1, 1),
 (1, 11),
@@ -118,9 +104,7 @@ INSERT INTO Participacao_Reuniao (id_reuniao, id_usuario) VALUES
 (7, 7),
 (8, 18);
 
--- =======================================================================
 -- 8. Inserindo 10 Recursos
--- =======================================================================
 INSERT INTO Recurso (tipo, data_inicial, data_final) VALUES
 ('Servidor AWS EC2', '2024-01-01', '2024-12-31'),
 ('Licença IDE', '2024-02-01', '2024-08-01'),
@@ -133,9 +117,7 @@ INSERT INTO Recurso (tipo, data_inicial, data_final) VALUES
 ('Raspberry Pi 4', '2024-01-05', '2024-12-05'),
 ('Créditos Azure', '2024-06-01', '2024-12-01');
 
--- =======================================================================
 -- 9. Inserindo 10 Reservas de Recurso
--- =======================================================================
 INSERT INTO Reserva_Recurso (id_projeto, id_recurso) VALUES
 (1, 1),
 (2, 8),
@@ -148,9 +130,7 @@ INSERT INTO Reserva_Recurso (id_projeto, id_recurso) VALUES
 (9, 7),
 (10, 9);
 
--- =======================================================================
 -- 10. Inserindo 10 Entregas
--- =======================================================================
 INSERT INTO Entrega (id_projeto, data_de_envio, status, link_repositorio, versao_major, versao_minor, versao_patch) VALUES
 (1, '2024-03-10 14:30:00', 'Aceito', 'github.com/proj/biblio', 1, 0, 0),
 (2, '2024-04-15 09:15:00', 'Em Avaliação', 'github.com/proj/mobilidade', 0, 9, 1),
